@@ -187,6 +187,9 @@ class _LocationPageState extends State<LocationPage> {
                         }),
                       ),
                     ),
+                    SizedBox(
+                      height: 70,
+                    ),
                   ],
                 ),
               ),
@@ -194,11 +197,23 @@ class _LocationPageState extends State<LocationPage> {
           ],
         ),
       ),
-      // bottomNavigationBar: Container(
-      //   child: Row(
-      //     children: [],
-      //   ),
-      // ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: () {
+          mapController!.animateCamera(
+            CameraUpdate.newCameraPosition(
+              CameraPosition(
+                target: LatLng(
+                  _currentPosition!.latitude,
+                  _currentPosition!.longitude,
+                ),
+                zoom: 15,
+              ),
+            ),
+          );
+        },
+        child: Icon(Icons.my_location),
+      ),
     );
   }
 }
